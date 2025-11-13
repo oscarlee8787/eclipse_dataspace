@@ -56,7 +56,7 @@ export interface CatalogRequest {
 }
 
 export interface ContractNegotiation {
-  '@id': string
+  '@id'?: string
   counterPartyAddress: string
   protocol: string
   policy: any
@@ -85,7 +85,7 @@ export const api = {
   // Provider APIs
   async createAsset(asset: Omit<Asset, '@id'> & { '@id'?: string }) {
     const response = await providerApi.post('/assets', {
-      '@context': { edc: 'https://w3id.org/edc/v0.0.1/ns/' },
+      '@context': { '@vocab': 'https://w3id.org/edc/v0.0.1/ns/' },
       '@id': asset['@id'] || crypto.randomUUID(),
       properties: asset.properties,
       dataAddress: asset.dataAddress,

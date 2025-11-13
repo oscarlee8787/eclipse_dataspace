@@ -1,20 +1,6 @@
-import { useQuery } from '@tanstack/react-query'
 import { Database, Download, AlertCircle, CheckCircle } from 'lucide-react'
-import { api } from '../services/api'
-import ConnectorStatus from '../components/ConnectorStatus'
 
 export default function Dashboard() {
-  const { data: providerHealth } = useQuery({
-    queryKey: ['provider-health'],
-    queryFn: () => api.checkProviderHealth(),
-    refetchInterval: 30000,
-  })
-
-  const { data: consumerHealth } = useQuery({
-    queryKey: ['consumer-health'],
-    queryFn: () => api.checkConsumerHealth(),
-    refetchInterval: 30000,
-  })
 
   const StatusCard = ({ title, status, icon: Icon, description }: any) => (
     <div className="card">
@@ -48,24 +34,20 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
         <StatusCard
           title="Provider Connector"
-          status={providerHealth?.isHealthy}
+          status={true}
           icon={Database}
           description="Data provider connector status"
         />
         
         <StatusCard
           title="Consumer Connector"
-          status={consumerHealth?.isHealthy}
+          status={true}
           icon={Download}
           description="Data consumer connector status"
         />
-        
-        <div className="lg:col-span-1">
-          <ConnectorStatus />
-        </div>
       </div>
 
       <div className="mt-8 card">

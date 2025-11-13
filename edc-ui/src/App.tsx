@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard'
 import Provider from './pages/Provider'
 import Consumer from './pages/Consumer'
 import Visualization from './pages/Visualization'
+import Test from './pages/Test'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/provider" element={<Provider />} />
         <Route path="/consumer" element={<Consumer />} />
         <Route path="/visualization" element={<Visualization />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
     </Layout>
   )

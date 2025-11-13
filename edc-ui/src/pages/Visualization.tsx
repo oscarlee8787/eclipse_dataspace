@@ -11,7 +11,8 @@ import ReactFlow, {
   MiniMap,
   Background,
   BackgroundVariant,
-} from 'react-flow-renderer'
+} from 'reactflow'
+import 'reactflow/dist/style.css'
 import { Database, Download, Shield, FileText, Activity } from 'lucide-react'
 import { api } from '../services/api'
 
@@ -157,7 +158,7 @@ export default function Visualization() {
     return edges
   }
 
-  const [nodes, setNodes, onNodesChange] = useNodesState(generateNodes())
+  const [nodes, , onNodesChange] = useNodesState(generateNodes())
   const [edges, setEdges, onEdgesChange] = useEdgesState(generateEdges())
 
   const onConnect = useCallback(
@@ -165,7 +166,7 @@ export default function Visualization() {
     [setEdges]
   )
 
-  const onNodeClick = (event: React.MouseEvent, node: Node) => {
+  const onNodeClick = (_: React.MouseEvent, node: Node) => {
     setSelectedNode(node)
   }
 
